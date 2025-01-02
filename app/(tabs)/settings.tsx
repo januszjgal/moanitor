@@ -67,13 +67,13 @@ export default function Settings() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'settings_export.json';
+        a.download = 'entries_export.json';
         a.click();
         URL.revokeObjectURL(url);
       } else {
         await Share.share({
           message: exportString,
-          title: 'Settings Export'
+          title: 'Entries Export'
         });
       }
     } catch (error: unknown) {
@@ -159,10 +159,10 @@ export default function Settings() {
         <Text style={styles.buttonText}>Clear All Storage</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={exportData}>
-        <Text style={styles.buttonText}>Export Settings</Text>
+        <Text style={styles.buttonText}>Export Entries</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={importData}>
-        <Text style={styles.buttonText}>Import Settings</Text>
+        <Text style={styles.buttonText}>Import Entries</Text>
       </TouchableOpacity>
       <ScrollView style={styles.dataContainer}>
         <Text style={styles.dataText}>{storageData}</Text>
