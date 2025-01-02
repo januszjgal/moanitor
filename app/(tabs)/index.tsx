@@ -4,7 +4,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { TouchableOpacity } from 'react-native';
-import { createButtonStyles } from '@/styles/styles';npx 
+import { createButtonStyles } from '@/styles/styles'; 
 import { useEntries } from '@/hooks/useEntries';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';

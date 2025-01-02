@@ -2,10 +2,11 @@ import { Tabs } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@/hooks/useTheme';
+import { ColorValue } from 'react-native';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof Ionicons>['name'];
-  color: string;
+  color: ColorValue;
 }) {
   return <Ionicons size={24} style={{ marginBottom: -3 }} {...props} />;
 }

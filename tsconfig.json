@@ -6,7 +6,10 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types"],
   },
   "include": [
     "**/*.ts",
