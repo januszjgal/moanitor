@@ -49,8 +49,12 @@ export default function HistoryScreen() {
     entries.forEach((entry) => {
       // Convert the entry.date to localDateStr
       const date = new Date(entry.date);
-      const localDateStr = date.toISOString().split('T')[0];
-  
+      const localDateStr = new Date(
+        date.getTime() - date.getTimezoneOffset() * 60 * 1000
+      )
+        .toISOString()
+        .split('T')[0];
+          
       // If this date hasn't been initialized, initialize with an empty array
       if (!result[localDateStr]) {
         result[localDateStr] = {
@@ -77,6 +81,7 @@ export default function HistoryScreen() {
       console.error('Error deleting entry:', error);
     }
   };
+  
 
   const renderList = () => (
     <ScrollView style={styles.listContainer}>
@@ -148,6 +153,7 @@ export default function HistoryScreen() {
       {view === 'list' ? (
         renderList()
       ) : (
+        <ThemedView style={styles.calendarWrapper}>
         <Calendar
         markingType="multi-dot" // <- this tells the calendar to interpret `dots` arrays
         markedDates={markedDates}
@@ -168,6 +174,7 @@ export default function HistoryScreen() {
         }}
         initialDate={new Date().toISOString().split('T')[0]}
         />
+        </ThemedView>
       )}
     </ThemedView>
   );

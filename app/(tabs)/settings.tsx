@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, useColorScheme, Share, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as DocumentPicker from 'expo-document-picker';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
+import { useTheme } from '@/hooks/useTheme';
+
 
 export default function Settings() {
   const [storageData, setStorageData] = useState<string>('');
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
+  const theme = useTheme();
 
   const checkStorage = async () => {
     try {
@@ -121,14 +124,13 @@ export default function Settings() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 16,
-      backgroundColor: isDark ? '#000000' : '#ffffff',
+      padding: theme.spacing.lg,
     },
     button: {
-      backgroundColor: '#9333EA',
-      padding: 12,
-      borderRadius: 8,
-      marginVertical: 8,
+      backgroundColor: theme.colors.primary,
+      padding: theme.spacing.md,
+      borderRadius: theme.borderRadius.md,
+      marginVertical: theme.spacing.sm,
     },
     buttonText: {
       color: '#fff',
@@ -137,21 +139,21 @@ export default function Settings() {
       fontWeight: '600',
     },
     dataContainer: {
-      marginTop: 16,
+      marginTop: theme.spacing.lg,
       flex: 1,
-      backgroundColor: isDark ? '#1c1c1e' : '#f5f5f5',
-      padding: 12,
-      borderRadius: 8,
+      backgroundColor: theme.colors.surface,
+      padding: theme.spacing.md,
+      borderRadius: theme.borderRadius.md,
     },
     dataText: {
       fontFamily: 'monospace',
       fontSize: 12,
-      color: isDark ? '#ffffff' : '#000000',
-    },
+      color: theme.colors.text.primary,
+  },
   });
 
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={checkStorage}>
         <Text style={styles.buttonText}>Check Storage Contents</Text>
       </TouchableOpacity>
@@ -167,6 +169,6 @@ export default function Settings() {
       <ScrollView style={styles.dataContainer}>
         <Text style={styles.dataText}>{storageData}</Text>
       </ScrollView>
-    </View>
+    </ThemedView>
   );
 }

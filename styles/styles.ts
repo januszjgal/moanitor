@@ -100,6 +100,7 @@ export const createHistoryStyles = (theme: Theme) =>
     },
     toggleButtonActive: {
       backgroundColor: theme.colors.primary,
+      color: '#FFFFFF', // Ensure white text color
     },
     listContainer: {
       flex: 1,
@@ -119,7 +120,7 @@ export const createHistoryStyles = (theme: Theme) =>
       color: theme.colors.text.primary,
     },
     entryItem: {
-      backgroundColor: theme.colors.secondary,
+      backgroundColor: theme.colors.surface,
       padding: theme.spacing.md,
       borderRadius: theme.borderRadius.md,
       marginBottom: theme.spacing.sm,
@@ -142,5 +143,10 @@ export const createHistoryStyles = (theme: Theme) =>
     soloIndicator: {
       fontSize: 12,
       marginTop: 4,
+    },
+    calendarWrapper: {
+      borderRadius: theme.borderRadius.lg, // Rounded corners
+      overflow: 'hidden', // Ensure content respects the border radius
+      backgroundColor: theme.colors.surface, // Matches calendar background
     },
   });

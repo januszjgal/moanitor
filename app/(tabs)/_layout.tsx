@@ -22,7 +22,10 @@ export default function TabLayout() {
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.text.secondary,
         tabBarStyle: {
-          backgroundColor: colorScheme === 'dark' ? theme.colors.background : '#fff',
+          backgroundColor: theme.colors.surface, // Use a darker surface color for the navbar
+          borderTopColor: theme.colors.secondary, // Optional: Add a border for separation
+          //paddingVertical: theme.spacing.md, // Add vertical padding
+          height: 55,
         },
         headerStyle: {
           backgroundColor: theme.colors.primary,
